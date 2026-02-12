@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Terminal | Initialization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Noto+Sans+Sinhala:wght@400;700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #06b6d4; }
+        body { 
+            background-color: #020617; 
+            font-family: 'Inter', sans-serif;
+            color: #94a3b8;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-sinhala { font-family: 'Noto Sans Sinhala', sans-serif; }
+
+        /* Blueprint Grid */
+        .bg-blueprint {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+        }
+
+        /* Tech Frame with logic-driven corners */
+        .tech-frame {
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            background: rgba(15, 23, 42, 0.8);
+            position: relative;
+        }
+        .tech-frame::before {
+            content: "+"; position: absolute; top: -10px; left: -10px; color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;
+        }
+        .tech-frame::after {
+            content: "+"; position: absolute; bottom: -10px; right: -10px; color: var(--accent); font-family: 'JetBrains Mono'; font-weight: bold;
+        }
+
+        /* Logic: Typewriter cursor */
+        @keyframes blink { 50% { opacity: 0; } }
+        .cursor { animation: blink 1s infinite; }
+
+        /* Smooth UI entry */
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-blueprint flex items-center justify-center min-h-screen p-6">
+
+    <div class="max-w-5xl w-full fade-in">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 font-mono text-[9px] tracking-[0.2em] text-slate-600 uppercase">
+            <div class="mb-2 md:mb-0">
+                <p>DOMAIN: <span class="text-slate-300">ILOVEPHYSICS.LK</span></p>
+                <p>PATH: <span class="text-slate-400">/TERMINAL/LMS_INIT</span></p>
+            </div>
+            <div class="md:text-right">
+                <p class="text-cyan-500 font-bold">OPERATOR: T_PREMATHILAKE</p>
+                <p>ID: <span class="text-slate-500">SYS_V2.6_STABLE</span></p>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+            
+            <div class="lg:col-span-1">
+                <div class="tech-frame p-6 h-full bg-slate-950/60 backdrop-blur-sm">
+                    <h3 class="text-[10px] font-mono text-cyan-500 mb-6 flex justify-between items-center">
+                        <span>SYSTEM_LOGS</span>
+                        <span class="animate-pulse">●</span>
+                    </h3>
+                    <div class="font-mono text-[10px] space-y-3 leading-relaxed">
+                        <p class="text-slate-600">07:22:01 <span class="text-slate-400">Mounting Core...</span></p>
+                        <p class="text-slate-600">07:22:04 <span class="text-slate-400">Node_26_Rev <span class="text-green-500">LOADED</span></span></p>
+                        <p class="text-slate-600">07:22:05 <span class="text-slate-400">Node_27_Theo <span class="text-green-500">LOADED</span></span></p>
+                        <p class="text-slate-600">07:22:08 <span class="text-slate-400">Mechatronics_Sync...</span></p>
+                        <p class="text-cyan-500">> calibrating_learning_matrix... <span class="cursor">_</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <div class="tech-frame p-10 md:p-16 relative overflow-hidden h-full group">
+                    <div class="absolute -right-10 -top-10 opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity">
+                        <svg width="300" height="300" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" stroke="cyan" stroke-width="0.2" fill="none" />
+                            <circle cx="50" cy="50" r="30" stroke="cyan" stroke-width="0.1" fill="none" />
+                            <path d="M50 0 L50 100 M0 50 L100 50" stroke="cyan" stroke-width="0.2" />
+                            <rect x="45" y="45" width="10" height="10" stroke="cyan" stroke-width="0.5" fill="none" />
+                        </svg>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-6">
+                            <div class="w-2 h-2 bg-cyan-500 animate-pulse"></div>
+                            <h2 class="font-mono text-cyan-500 text-[10px] tracking-[0.5em] uppercase">Status: Deployment_Phase_04</h2>
+                        </div>
+                        
+                        <h1 class="text-6xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-none">
+                            LMS <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Terminal</span>
+                        </h1>
+
+                        <p class="text-xl font-sinhala text-slate-300 mb-12 max-w-lg leading-relaxed border-l-2 border-cyan-900/50 pl-6">
+                            භෞතික විද්‍යාවේ ඉංජිනේරුමය ප්‍රවේශය. <br>
+                            <span class="text-lg text-slate-500">නව LMS එක සමඟින් ඉක්මනින්ම හමුවෙමු.</span>
+                        </p>
+
+                        <div class="space-y-4 max-w-sm mb-12">
+                            <div class="flex justify-between font-mono text-[9px] tracking-widest uppercase">
+                                <span class="text-slate-500">Assembly_Sequence</span>
+                                <span class="text-cyan-400 font-bold">92.4%</span>
+                            </div>
+                            <div class="w-full bg-slate-900/50 border border-slate-800 h-1.5 p-[1px]">
+                                <div class="bg-cyan-500 h-full w-[92%] shadow-[0_0_15px_rgba(6,182,212,0.5)]"></div>
+                            </div>
+                            <div class="flex gap-6 font-mono text-[8px] uppercase tracking-wider">
+                                <span class="flex items-center gap-1.5 text-green-500">
+                                    <span class="w-1 h-1 bg-green-500 rounded-full"></span> 2026_Ready
+                                </span>
+                                <span class="flex items-center gap-1.5 text-purple-500">
+                                    <span class="w-1 h-1 bg-purple-500 rounded-full"></span> 2027_Ready
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <a href="index.html" class="inline-flex items-center gap-3 text-[10px] font-mono text-slate-500 hover:text-cyan-400 transition-all group">
+                                <span class="group-hover:-translate-x-1 transition-transform">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-width="2"/></svg>
+                                </span>
+                                RETURN_TO_ROOT_DIRECTORY
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-8 text-center border-t border-slate-900 pt-8">
+            <p class="font-mono text-[9px] text-slate-700 uppercase tracking-[0.4em]">
+                Engineered Interface // Build: 2026.02.R1 // &copy; ILOVEPHYSICS.LK
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ilovephysics.lk | Control Interface</title>
+    
+    <meta name="description" content="Advanced Level Physics by Thiwanka Premathilake - Mechatronics Engineering perspective.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Noto+Sans+Sinhala:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --line-color: rgba(6, 182, 212, 0.15); --cyan-glow: #06b6d4; }
+        
+        body { background-color: #020617; font-family: 'Inter', sans-serif; color: #94a3b8; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-sinhala { font-family: 'Noto Sans Sinhala', sans-serif; }
+
+        .bg-blueprint {
+            background-image: linear-gradient(to right, var(--line-color) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--line-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .tech-box {
+            border: 1px solid #1e293b;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 96% 100%, 0% 100%);
+            transition: all 0.3s ease;
+        }
+
+        /* --- STABLE NAV SYSTEM --- */
+        .nav-item { 
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-item::before, .nav-item::after {
+            display: inline-block;
+            color: #06b6d4;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .nav-item::before { content: '['; margin-right: 4px; }
+        .nav-item::after { content: ']'; margin-left: 4px; }
+
+        .nav-item.active { color: #06b6d4; }
+        .nav-item.active::before, .nav-item.active::after {
+            opacity: 1;
+        }
+
+        section[id] { scroll-margin-top: 5rem; }
+
+        .thumb-btn { border: 1px solid #1e293b; transition: all 0.3s ease; }
+        .thumb-active { border-color: #06b6d4 !important; opacity: 1 !important; box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); }
+        #main-product-display { transition: opacity 0.2s ease-in-out, transform 0.2s ease-out; }
+
+        /* Back to Top Button Styling */
+        #back-to-top {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        #back-to-top.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-blueprint selection:bg-cyan-500 selection:text-black">
+
+    <nav class="sticky top-0 z-[100] bg-slate-950/90 backdrop-blur-md border-b border-cyan-900/40">
+        <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-white font-black tracking-tighter text-lg uppercase">ilovephysics.lk</span>
+            </div>
+            
+            <button id="menu-btn" class="md:hidden text-cyan-500 p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            </button>
+
+            <div class="hidden md:flex items-center gap-6 text-[10px] font-mono tracking-widest uppercase">
+                <a href="#about" class="nav-item">./About</a>
+                <a href="#modules" class="nav-item">./Lessons</a>
+                <a href="#merch" class="nav-item">./Merch</a>
+                <a href="/lms.html" class="ml-4 bg-cyan-500 text-black px-4 py-2 font-bold hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/10">
+                    INIT_LMS_ACCESS
+                </a>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-b border-cyan-900/40 p-6 space-y-4 text-[10px] font-mono tracking-widest uppercase">
+            <a href="#about" class="nav-item block w-fit">./About</a>
+            <a href="#modules" class="nav-item block w-fit">./Ongoing_Lessons</a>
+            <a href="#merch" class="nav-item block w-fit">./Merch</a>
+            <a href="/lms.html" class="block bg-cyan-500 text-black px-4 py-3 font-bold text-center">INIT_LMS_ACCESS</a>
+        </div>
+    </nav>
+
+    <section id="about" class="relative pt-24 pb-32 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-4">
+                <div class="tech-box bg-slate-950/80 backdrop-blur-xl p-8 relative group border-slate-800 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)] transition-all duration-500">
+                    <div class="absolute top-0 right-0 p-4 text-right">
+                        <p class="font-mono text-[7px] text-slate-600 leading-none uppercase tracking-[0.2em]">
+                            SERIAL: TP-2026-ENG<br>
+                            LEVEL: LEAD_INSTRUCTOR<br>
+                            <span class="text-cyan-500/50">ACTIVE_PROTOCOL</span>
+                        </p>
+                    </div>
+                    <div class="relative z-10">
+                        <header class="mb-10">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="w-8 h-[1px] bg-cyan-500/50"></span>
+                                <p class="text-[9px] font-mono text-cyan-500 tracking-[0.4em] uppercase">Identity_Profile</p>
+                            </div>
+                            <h3 class="text-4xl font-light text-white tracking-tighter uppercase leading-[0.9]">
+                                Thiwanka <br>
+                                <span class="font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600">Premathilake</span>
+                            </h3>
+                        </header>
+                        <div class="space-y-6">
+                            <div class="group/spec flex items-start gap-4">
+                                <div class="mt-1.5 w-1 h-1 bg-cyan-500 shadow-[0_0_8px_#06b6d4]"></div>
+                                <div>
+                                    <p class="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-1">Discipline</p>
+                                    <p class="text-xs text-slate-200 font-bold uppercase tracking-tight group-hover/spec:text-cyan-400 transition-colors">Mechatronics Engineering</p>
+                                </div>
+                            </div>
+                            <div class="group/spec flex items-start gap-4">
+                                <div class="mt-1.5 w-1 h-1 bg-slate-700"></div>
+                                <div>
+                                    <p class="text-[8px] font-mono text-slate-500 uppercase tracking-widest mb-1">Institution</p>
+                                    <p class="text-xs text-slate-200 font-bold uppercase tracking-tight">University of OUSL <span class="text-[9px] font-normal text-slate-500">(UG)</span></p>
+                                </div>
+                            </div>
+                            <div class="group/spec flex items-start gap-4 bg-cyan-950/10 p-3 -ml-3 border-l-2 border-cyan-500/0 hover:border-cyan-500/50 transition-all">
+                                <div class="mt-1.5 w-1 h-1 bg-cyan-500"></div>
+                                <div>
+                                    <p class="text-[8px] font-mono text-cyan-600 uppercase tracking-widest mb-1">Syllabus_Focus</p>
+                                    <p class="text-base text-white font-bold font-sinhala leading-tight">උසස් පෙළ භෞතික විද්‍යාව</p>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="mt-12 pt-5 border-t border-slate-900/50 flex justify-between items-end text-[8px] font-mono">
+                            <div class="space-y-1">
+                                <div class="flex gap-1">
+                                    <div class="w-4 h-1 bg-cyan-500"></div>
+                                    <div class="w-1 h-1 bg-slate-800"></div>
+                                </div>
+                                <p class="text-slate-600 uppercase tracking-tighter text-[7px]">System_Check: Passed</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-slate-600">VER_01.2</span>
+                                <span class="text-cyan-500 animate-pulse">● STABLE</span>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-8">
+                <div class="inline-block px-3 py-1 border border-cyan-500/20 text-cyan-500 text-[10px] font-mono mb-6 uppercase">Operational_Status: Physics Terminal</div>
+                <h1 class="text-6xl md:text-9xl font-black text-white leading-none mb-8 tracking-tighter uppercase">ජීවිතේම <br><span class="text-cyan-500">Physics.</span></h1>
+                <p class="text-xl text-slate-400 font-sinhala leading-relaxed max-w-2xl mb-10 border-l-2 border-cyan-900 pl-6">භෞතික විද්‍යාව යනු හුදෙක් විෂයක් නොව, ලෝකය ක්‍රියාත්මක වන ආකාරය වටහා ගන්නා ඉංජිනේරුමය ප්‍රවේශයකි.</p>
+                <a href="/lms.html" class="inline-flex px-10 py-5 bg-white text-slate-950 font-black text-sm uppercase hover:bg-cyan-500 transition-all items-center gap-3">
+                    <span>Access Learning Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="modules" class="py-24 bg-slate-950/80 border-y border-cyan-900/20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <header class="mb-16 flex items-center gap-8"><h2 class="text-xs font-mono text-cyan-500 tracking-[0.4em] uppercase">Ongoing_Lessons</h2><div class="w-full h-px bg-slate-800"></div></header>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="group relative p-8 bg-slate-900/40 border border-slate-800 hover:border-cyan-500/50 transition-all overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-7xl font-black text-slate-800/10 group-hover:text-cyan-500/5 transition-colors uppercase">26T</div>
+                    <div class="flex justify-between items-start mb-8 font-mono">
+                        <div class="px-2 py-0.5 border border-cyan-500/30 text-cyan-400 text-[9px] font-bold">BATCH :: 2026_THEORY</div>
+                        <div class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_10px_#06b6d4]"></div>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2 font-sinhala">තාපය</h3>
+                    <p class="text-sm text-slate-400 font-sinhala leading-relaxed">පදාර්ථයක අංශු සතු අභ්‍යන්තර ශක්තිය සහ එම ශක්තියේ වෙනස්වීම් පිළිබඳව ගැඹුරු විග්‍රහයක්.</p>
+                </div>
+                <div class="group relative p-8 bg-slate-900/40 border border-slate-800 hover:border-orange-500/50 transition-all overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-7xl font-black text-slate-800/10 group-hover:text-orange-500/5 transition-colors uppercase">26R</div>
+                    <div class="flex justify-between items-start mb-8 font-mono">
+                        <div class="px-2 py-0.5 border border-orange-500/30 text-orange-400 text-[9px] font-bold uppercase">Batch :: 2026_Revision</div>
+                        <div class="w-2 h-2 rounded-full bg-orange-500 animate-pulse shadow-[0_0_10px_#f97316]"></div>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2 font-sinhala">යාන්ත්‍ර විද්‍යාව</h3>
+                    <p class="text-sm text-slate-400 font-sinhala leading-relaxed">වස්තූන්ගේ චලිතය සහ ඒවා මත බලපවත්වන බලයන් පිළිබඳව සිදුකරන පුළුල් පුනරීක්ෂණය.</p>
+                </div>
+                <div class="group relative p-8 bg-slate-900/40 border border-slate-800 hover:border-emerald-500/50 transition-all overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-7xl font-black text-slate-800/10 group-hover:text-emerald-500/5 transition-colors uppercase">27T</div>
+                    <div class="flex justify-between items-start mb-8 font-mono">
+                        <div class="px-2 py-0.5 border border-emerald-500/30 text-emerald-400 text-[9px] font-bold uppercase">Batch :: 2027_Theory</div>
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]"></div>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2 font-sinhala">මිනුම් උපකරණ</h3>
+                    <p class="text-sm text-slate-400 font-sinhala leading-relaxed">භෞතික රාශීන් ඉතා නිවැරදිව මැන ගන්නා ආකාරය සහ නවීන මිනුම් උපකරණ භාවිතය.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="merch" class="py-24 px-6 border-t border-slate-900 bg-[#020617] relative overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <header class="mb-12 flex items-center justify-between">
+                <div>
+                    <p class="text-[10px] font-mono text-cyan-500 tracking-[0.4em] uppercase mb-1">Equipment_Module</p>
+                    <h2 class="text-4xl font-black text-white uppercase tracking-tighter">Official Gear</h2>
+                </div>
+                <div class="hidden md:flex flex-col items-end font-mono text-[8px] text-slate-700">
+                    <span>SKU: JP-TEE-240G</span>
+                    <span>RELEASE: SEASON_01</span>
+                </div>
+            </header>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-6 flex gap-4">
+                    <div class="flex flex-col gap-3">
+                        <button onclick="updateDisplay('Both front.jpeg', this)" class="thumb-btn thumb-active w-16 h-16 p-1 bg-slate-900">
+                            <img src="Both front.jpeg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                        </button>
+                        <button onclick="updateDisplay('Both back.jpeg', this)" class="thumb-btn w-16 h-16 p-1 bg-slate-900 opacity-40 hover:opacity-100">
+                            <img src="Both back.jpeg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all">
+                        </button>
+                    </div>
+
+                    <div class="flex-1 bg-slate-950 border border-slate-900 relative aspect-[4/5] flex items-center justify-center overflow-hidden cursor-crosshair group/zoom"
+                        onmousemove="zoomIn(event)" onmouseleave="zoomOut()">
+                        <img id="main-product-display" src="Both front.jpeg" 
+                            class="relative z-10 w-full h-full object-contain p-4 pointer-events-none origin-center">
+                        <div class="absolute inset-0 border border-cyan-500/10 pointer-events-none z-20"></div>
+                        <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-cyan-500/30"></div>
+                        <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-cyan-500/30"></div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-[9px] font-mono uppercase tracking-widest">Active Stock</span>
+                        <div class="flex gap-1">
+                            <div class="w-1 h-1 bg-cyan-500"></div>
+                            <div class="w-1 h-1 bg-cyan-500/30"></div>
+                            <div class="w-1 h-1 bg-cyan-500/30"></div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-tight mb-6">
+                        Jeewithema Physics <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600">Oversized Tee</span>
+                    </h3>
+
+                    <div class="space-y-8">
+                        <p class="font-sinhala text-slate-400 text-lg leading-relaxed border-l-2 border-slate-800 pl-6">
+                            උසස් පෙළ භෞතික විද්‍යාව හදාරන සිසුන් සඳහාම විශේෂයෙන් නිර්මාණය වූ ඉහළ ගුණාත්මකභාවයෙන් යුතු නිල ඇඟලුම් එකතුව.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-900/40 border border-slate-800">
+                                <p class="text-[8px] font-mono text-cyan-600 uppercase mb-1">Fabric_Density</p>
+                                <p class="text-white font-bold text-sm tracking-tight">240 GSM Cotton</p>
+                            </div>
+                            <div class="p-4 bg-slate-900/40 border border-slate-800">
+                                <p class="text-[8px] font-mono text-cyan-600 uppercase mb-1">Architecture</p>
+                                <p class="text-white font-bold text-sm tracking-tight">Heavyweight Oversized</p>
+                            </div>
+                            <div class="p-4 bg-slate-900/40 border border-slate-800">
+                                <p class="text-[8px] font-mono text-cyan-600 uppercase mb-1">Graphic_Process</p>
+                                <p class="text-white font-bold text-sm tracking-tight">High-Density Screen</p>
+                            </div>
+                            <div class="p-4 bg-slate-900/40 border border-slate-800">
+                                <p class="text-[8px] font-mono text-cyan-600 uppercase mb-1">Available_Sizes</p>
+                                <p class="text-white font-bold text-sm tracking-tight">M / L / XL / 2XL</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center gap-6">
+                            <div class="flex-1 text-center md:text-left">
+                                <span class="block text-[10px] font-mono text-slate-600 uppercase tracking-widest mb-1">Current_Valuation</span>
+                                <span class="text-4xl font-black text-white tracking-tighter italic">LKR 2,850.00</span>
+                            </div>
+                            <a href="https://wa.me/94XXXXXXXXX?text=Initialize_Order:_Jeewithema_Physics_Oversized_Tee" 
+                                target="_blank"
+                                class="w-full md:w-auto flex items-center justify-center gap-4 px-10 py-5 bg-cyan-500 text-black font-black uppercase text-xs tracking-widest hover:bg-white transition-all shadow-[0_0_30px_rgba(6,182,212,0.2)]">
+                                <span>Initialize Order</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 z-[110] bg-cyan-500 text-black p-4 shadow-2xl shadow-cyan-500/40 hover:bg-white transition-colors group">
+        <svg class="w-5 h-5 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <footer class="py-8 bg-slate-950 px-6 border-t border-slate-900">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center font-mono text-[9px] text-slate-600 uppercase tracking-widest">
+            <div class="flex gap-4"><span>&copy; 2026_ilovephysics.lk</span><span class="text-cyan-900">|</span><span>Build_01.A</span></div>
+            <div class="mt-4 md:mt-0 text-cyan-500 tracking-widest">// Structured_Learning_Platform</div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Navigation Logic ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobile-menu .nav-item').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // --- Gallery/Zoom ---
+        function updateDisplay(imgSrc, element) {
+            const mainImg = document.getElementById('main-product-display');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = imgSrc;
+                mainImg.style.opacity = '1';
+                document.querySelectorAll('.thumb-btn').forEach(btn => btn.classList.remove('thumb-active'));
+                element.classList.add('thumb-active');
+            }, 150);
+        }
+
+        function zoomIn(event) {
+            if (window.innerWidth < 1024) return;
+            const img = document.getElementById('main-product-display');
+            const rect = event.currentTarget.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = "scale(2)";
+        }
+
+        function zoomOut() {
+            document.getElementById('main-product-display').style.transform = "scale(1)";
+        }
+
+        // --- Back to Top Logic ---
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('back-to-top');
+            if (window.scrollY > 500) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // --- Bi-directional Intersection Observer ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('section[id]');
+            
+            const options = {
+                root: null,
+                rootMargin: '-45% 0px -45% 0px', 
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navItems.forEach(link => {
+                            const isMatch = link.getAttribute('href') === `#${id}`;
+                            link.classList.toggle('active', isMatch);
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
